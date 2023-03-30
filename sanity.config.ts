@@ -10,13 +10,18 @@ import { pageStructure, singletonPlugin } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import page from 'schemas/documents/page'
-import project from 'schemas/documents/project'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
-import timeline from 'schemas/objects/timeline'
-import home from 'schemas/singletons/home'
-import settings from 'schemas/singletons/settings'
+import { home } from 'schemas/singletons/home'
+import { settings } from 'schemas/singletons/settings'
+import { theme } from './theme'
+import { category } from './schemas/documents/category'
+import { artist } from './schemas/documents/artist'
+import { page } from './schemas/documents/page'
+import { workshop } from './schemas/documents/workshop'
+import { event } from './schemas/documents/event'
+import { sponsor } from './schemas/documents/sponsor'
+import { gallery } from './schemas/documents/gallery'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -25,7 +30,12 @@ const title =
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
   page.name,
-  project.name,
+  category.name,
+  artist.name,
+  workshop.name,
+  event.name,
+  sponsor.name,
+  gallery.name,
 ]
 
 export default defineConfig({
@@ -42,10 +52,14 @@ export default defineConfig({
       // Documents
       duration,
       page,
-      project,
+      category,
+      artist,
+      workshop,
+      event,
+      sponsor,
+      gallery,
       // Objects
       milestone,
-      timeline,
     ],
   },
   plugins: [
@@ -68,4 +82,5 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  theme: theme,
 })

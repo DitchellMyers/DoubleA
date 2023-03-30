@@ -1,9 +1,9 @@
+import { SubPage } from '@/types/typings'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import ScrollUp from 'components/shared/ScrollUp'
-import type { PagePayload } from 'types'
 
-export function Page({ data }: { data: PagePayload }) {
+export function Page({ data }: { data: SubPage }) {
   // Default to an empty object to allow previews on non-existent documents
   const { body, overview, title } = data || {}
 
@@ -11,15 +11,15 @@ export function Page({ data }: { data: PagePayload }) {
     <div>
       <div className="mb-14">
         {/* Header */}
-        <Header title={title} description={overview} />
+        {/* <Header title={title} description={overview} /> */}
 
         {/* Body */}
-        {body && (
+        {/* {body && (
           <CustomPortableText
             paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
             value={body}
           />
-        )}
+        )} */}
 
         {/* Workaround: scroll to top on route change */}
         <ScrollUp />

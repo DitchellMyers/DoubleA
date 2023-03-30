@@ -1,13 +1,11 @@
 'use client'
 
+import { HomePage } from '@/types/typings'
 import { usePreview } from 'lib/sanity.preview'
 import { homePageQuery } from 'lib/sanity.queries'
-import type { HomePagePayload } from 'types'
-
-import { HomePage } from './HomePage'
 
 export function HomePagePreview({ token }: { token: null | string }) {
-  const home: HomePagePayload = usePreview(token, homePageQuery)
+  const home: HomePage = usePreview(token, homePageQuery)
 
   if (!home) {
     return (
@@ -17,5 +15,6 @@ export function HomePagePreview({ token }: { token: null | string }) {
     )
   }
 
-  return <HomePage data={home} />
+  // return <HomePage data={home} />
+  return <div></div>
 }

@@ -1,7 +1,7 @@
 import { CogIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export default defineType({
+export const settings = defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
@@ -10,8 +10,25 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'menuItems',
-      title: 'Menu Item list',
+      name: 'image',
+      title: 'Logo',
+      type: 'image',
+      description: 'Logo der Navigation. Feld zuerst leeren um Bild zu ändern',
+      options: {
+        hotspot: true, // <-- Defaults to false
+      },
+      fields: [
+        {
+          name: 'beschreibung',
+          type: 'string',
+          title: 'Beschreibung',
+        },
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'navItems',
+      title: 'Links für Navigation',
       description: 'Links displayed on the header of your site.',
       type: 'array',
       of: [
@@ -20,43 +37,120 @@ export default defineType({
           type: 'reference',
           to: [
             {
-              type: 'home',
+              type: 'category',
             },
             {
               type: 'page',
-            },
-            {
-              type: 'project',
             },
           ],
         },
       ],
     }),
     defineField({
-      name: 'footer',
-      description:
-        'This is a block of text that will be displayed at the bottom of the page.',
-      title: 'Footer Info',
+      name: 'sponsors',
+      title: 'Sponsoren',
+      description: '',
       type: 'array',
       of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
+        {
+          title: 'Reference',
+          type: 'reference',
+          to: [
+            {
+              type: 'sponsor',
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'footerItems',
+      title: 'Links für Footer',
+      description: 'Links displayed on the footer of your site.',
+      type: 'array',
+      of: [
+        {
+          title: 'Reference',
+          type: 'reference',
+          to: [
+            {
+              type: 'page',
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'socials',
+      title: 'Socials',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        defineField({
+          title: 'Twitter',
+          name: 'twitter',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'Facebook',
+          name: 'facebook',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'Instagram',
+          name: 'instagram',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'TikTok',
+          name: 'tiktok',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'Spotify',
+          name: 'spotify',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'Youtube',
+          name: 'youtube',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+        defineField({
+          title: 'Website',
+          name: 'website',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
         }),
       ],
     }),

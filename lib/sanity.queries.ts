@@ -2,58 +2,82 @@ import { groq } from 'next-sanity'
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
-    _id, 
-    footer,
-    overview, 
-    showcaseProjects[]->{
-      _type,
-      coverImage, 
-      overview, 
-      "slug": slug.current,
-      tags, 
-      title, 
-    }, 
-    title, 
-  }
-`
-
-export const homePageTitleQuery = groq`
-  *[_type == "home"][0].title
-`
-
-export const pagesBySlugQuery = groq`
-  *[_type == "page" && slug.current == $slug][0] {
-    _id,
-    body,
-    overview,
-    slug,
-    title,
-  }
-`
-
-export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
-    _id,
-    client, 
-    coverImage,
-    description,
-    duration, 
-    overview,
-    site, 
-    "slug": slug.current,
-    tags,
-    title,
+    ...,
+    "image": image.asset->url,
+    pages[]->{
+      _id,
+      name,
+      "slug": slug.current
+    }
   }
 `
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
-    footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
+    ...,
+    navItems[]->{
+      _id,
+      name,
+      path != null => {
+        path[]->{
+          _id,
+          title,
+          "slug": slug.current,
+        }
+      },
+      slug != null => {
+        "slug": slug.current
+      }
     },
-    ogImage,
+    footerItems[]->{
+      _id,
+      _type,
+      title,
+      "slug": slug.current,
+    },
+    sponsors[]->{
+      ...,
+      "slug": slug.current
+    }
   }
+`
+export const pageQuery = groq`*[_type == "page" && name == $name][0] {
+  ...,
+  "slug": slug.current,
+  "artists": artists[]->,
+  "workshops": workshops[]->,
+  "sponsors": sponsors[]->,
+  "events": events[]->,
+  "galleries": galleries[]->,
+}
+`
+
+export const artistPageQuery = groq`*[_type == "page" && name == "Artists"][0] {
+  ...,
+  "slug": slug.current,
+  artists[]->{
+    ...,
+    "slug": slug.current,
+  },
+}
+`
+
+export const workshopsQuery = groq`*[_type == "page" && name == "Workshops"][0] {
+  ...,
+  "slug": slug.current
+  workshops[]->{
+    ...,
+    "slug": slug.current,
+  }
+}
+`
+
+export const sponsorsQuery = groq`*[_type == "page" && name == "Sponsoren und Partner"][0] {
+  ...,
+  "slug": slug.current
+  sponsors[]->{
+    ...,
+    "slug": slug.current,
+  }
+}
 `

@@ -1,26 +1,96 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export default defineType({
+export const page = defineType({
   type: 'document',
   name: 'page',
   title: 'Page',
-  icon: DocumentIcon,
+  groups: [
+    {
+      name: 'artist',
+      title: 'Artist',
+    },
+    {
+      name: 'artist',
+      title: 'Artist',
+      default: false,
+      hidden: ({ document }) => !document?.list?.includes('artist'),
+    },
+    {
+      name: 'workshop',
+      title: 'Workshop',
+      default: false,
+      hidden: ({ document }) => !document?.list?.includes('workshop'),
+    },
+    {
+      name: 'sponsor',
+      title: 'Sponsor',
+      default: false,
+      hidden: ({ document }) => !document?.list?.includes('sponsor'),
+    },
+    {
+      name: 'event',
+      title: 'Event',
+      default: false,
+      hidden: ({ document }) => !document?.list?.includes('event'),
+    },
+    {
+      name: 'gallery',
+      title: 'Galerie',
+      default: false,
+      hidden: ({ document }) => !document?.list?.includes('gallery'),
+    },
+  ],
   fields: [
     defineField({
+      name: 'name',
+      title: 'Name',
       type: 'string',
-      name: 'title',
-      title: 'Title',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'alias',
+      title: 'Alias',
+      type: 'string',
     }),
     defineField({
       type: 'slug',
       name: 'slug',
       title: 'Slug',
       options: {
-        source: 'title',
+        source: 'name',
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'list',
+      title: 'Auswahlmöglichkeiten',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        list: [
+          {
+            value: 'artist',
+            title: 'Artist',
+          },
+          {
+            value: 'workshop',
+            title: 'Workshop',
+          },
+          {
+            value: 'sponsor',
+            title: 'Sponsor',
+          },
+          {
+            value: 'event',
+            title: 'Event',
+          },
+          {
+            value: 'gallery',
+            title: 'Gallery',
+          },
+        ],
+        layout: 'grid',
+      },
     }),
     defineField({
       name: 'overview',
@@ -52,73 +122,80 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'content',
+      title: 'Content',
       type: 'array',
-      name: 'body',
-      title: 'Body',
-      description:
-        "This is where you can write the page's content. Including custom blocks like timelines for more a more visual display of information.",
+      of: [{ type: 'block' }],
+    }),
+    defineField({
+      name: 'artists',
+      title: 'Artists',
+      group: 'artist',
+      type: 'array',
       of: [
-        // Paragraphs
         defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
-        defineField({
-          type: 'image',
-          icon: ImageIcon,
-          name: 'image',
-          title: 'Image',
-          options: {
-            hotspot: true,
-          },
-          preview: {
-            select: {
-              imageUrl: 'asset.url',
-              title: 'caption',
-            },
-          },
-          fields: [
-            defineField({
-              title: 'Caption',
-              name: 'caption',
-              type: 'string',
-            }),
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
-              description:
-                'Alternative text for screenreaders. Falls back on caption if not set',
-            }),
-          ],
+          type: 'reference',
+          to: [{ type: 'artist' }],
         }),
       ],
+      hidden: ({ document }) => !document?.list?.includes('artist'),
+    }),
+    defineField({
+      name: 'workshops',
+      title: 'Workshops',
+      group: 'workshop',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'workshop' }],
+        }),
+      ],
+      hidden: ({ document }) => !document?.list?.includes('workshop'),
+    }),
+    defineField({
+      name: 'sponsors',
+      title: 'Sponsoren und Partner',
+      group: 'sponsor',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'sponsor' }],
+        }),
+      ],
+      hidden: ({ document }) => !document?.list?.includes('sponsor'),
+    }),
+    defineField({
+      name: 'events',
+      title: 'Events',
+      group: 'event',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'event' }],
+        }),
+      ],
+      hidden: ({ document }) => !document?.list?.includes('event'),
+    }),
+    defineField({
+      name: 'galleries',
+      title: 'Galerien',
+      group: 'gallery',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'gallery' }],
+        }),
+      ],
+      hidden: ({ document }) => !document?.list?.includes('gallery'),
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'name',
     },
     prepare({ title }) {
       return {
