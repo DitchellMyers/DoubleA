@@ -3,7 +3,7 @@ import { groq } from 'next-sanity'
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     ...,
-    "image": image.asset->url,
+    "backgroundImage": image.asset->url,
     pages[]->{
       _id,
       name,
@@ -18,10 +18,10 @@ export const settingsQuery = groq`
     navItems[]->{
       _id,
       name,
-      path != null => {
-        path[]->{
+      slugs != null => {
+        slugs[]->{
           _id,
-          title,
+          name,
           "slug": slug.current,
         }
       },

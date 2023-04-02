@@ -1,7 +1,6 @@
-import { SubPage } from '@/types/typings'
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Header } from 'components/shared/Header'
-import ScrollUp from 'components/shared/ScrollUp'
+import { SubPage } from "@/types/typings"
+import { CustomPortableText } from "components/shared/CustomPortableText"
+import { ScrollUp } from "components/shared/ScrollUp"
 
 export function Page({ data }: { data: SubPage }) {
   // Default to an empty object to allow previews on non-existent documents

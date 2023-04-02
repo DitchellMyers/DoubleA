@@ -13,7 +13,7 @@ export const category = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'navItems',
+      name: 'slugs',
       title: 'Links der Navigation',
       type: 'array',
       of: [
@@ -31,7 +31,7 @@ export const category = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'name',
       media: 'image',
     },
   },

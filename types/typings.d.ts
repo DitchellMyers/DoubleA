@@ -1,7 +1,7 @@
 import type { Image, PortableTextBlock as Block, SanityDocument } from 'sanity'
 
 interface ExtendedImage extends Image {
-  description: string
+  beschreibung: string
 }
 
 export interface Core extends SanityDocument {
@@ -23,7 +23,14 @@ export interface Page extends Core {
 export interface NavigationLink {
   _id: string
   name: string
-  slug: string
+  slug?: string
+  slugs?: [
+    {
+      _id: string
+      slug: string
+      name: string
+    }
+  ]
 }
 
 export interface Settings extends Core {
@@ -31,14 +38,16 @@ export interface Settings extends Core {
   navImage: ExtendedImage
   navItems: NavigationLink[]
   footerItems: NavigationLink[]
-  socials: { [key: string]: string }
+  socials: Social[]
+  sponsors: Sponsor[]
 }
 
 export interface HomePage extends Page {
+  eventDate: string
+  backgroundImage: string
   vorwort: Block[]
   meta: Block[]
-  backgroundImage: string
-  pages: SubPage[]
+  pages: NavigationLink[]
 }
 
 export interface SubPage extends Page {
@@ -64,6 +73,10 @@ export interface Sponsor extends CoreObject {}
 
 export interface Gallery extends CoreObject {
   images: ExtendedImage[]
+}
+
+export interface Social {
+  [key: string]: string
 }
 
 export interface SlugProps {

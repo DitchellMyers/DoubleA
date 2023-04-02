@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useEffect } from 'react'
+import { useEffect } from "react"
 
 /**
  * Workaround to force pages to scroll to the top when navigating with `<Link>`.
@@ -8,7 +8,7 @@ import { useEffect } from 'react'
  * https://github.com/vercel/next.js/issues/42492
  */
 
-export default function ScrollUp() {
+export const ScrollUp = () => {
   useEffect(() => window.document.scrollingElement?.scrollTo(0, 0), [])
 
   return null

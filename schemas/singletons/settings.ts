@@ -10,7 +10,7 @@ export const settings = defineType({
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'image',
+      name: 'navImage',
       title: 'Logo',
       type: 'image',
       description: 'Logo der Navigation. Feld zuerst leeren um Bild zu ändern',
@@ -155,7 +155,7 @@ export const settings = defineType({
       ],
     }),
     defineField({
-      name: 'ogImage',
+      name: 'metaImage',
       title: 'Open Graph Image',
       type: 'image',
       description: 'Displayed on social cards and search engine results.',

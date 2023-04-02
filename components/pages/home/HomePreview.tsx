@@ -3,6 +3,7 @@
 import { HomePage } from '@/types/typings'
 import { usePreview } from 'lib/sanity.preview'
 import { homePageQuery } from 'lib/sanity.queries'
+import { Home } from './Home'
 
 export function HomePagePreview({ token }: { token: null | string }) {
   const home: HomePage = usePreview(token, homePageQuery)
@@ -15,6 +16,5 @@ export function HomePagePreview({ token }: { token: null | string }) {
     )
   }
 
-  // return <HomePage data={home} />
-  return <div></div>
+  return <Home data={home} />
 }

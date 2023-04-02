@@ -5,7 +5,7 @@ interface PreviewBannerProps {
 
 export function PreviewBanner({ loading }: PreviewBannerProps) {
   return (
-    <div className="bg-black p-3 text-center text-white">
+    <div className="z-[9000] bg-black p-3 text-center text-white">
       {loading ? 'Loading...' : 'Previewing draft content.'}{' '}
       <a
         className="underline transition hover:opacity-50"
