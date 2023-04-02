@@ -20,7 +20,7 @@ const NavbarMainMenu = ({ menus, items, toggle, reset }: INavbarMainMenu) => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: "-100%", opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className={"absolute left-0 top-0 h-full w-full p-4"}
+          className={"absolute bottom-0 left-0 right-0 top-0 p-4"}
         >
           <ul className="m-0 flex flex-col gap-5 text-2xl">
             {items.map((item, index) => (

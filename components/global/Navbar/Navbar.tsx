@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ExtendedImage, NavigationLink } from "@/types/typings"
@@ -24,6 +24,14 @@ export function Navbar({ items, logo }: INavbar) {
   const [sMenus, setSMenus] = useState<{ [key: string]: boolean }>({})
   const pathName = usePathname()
   const { scrollY } = useScroll()
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  })
 
   // Toggle Submenu
   const toggleSMenu = (sMenu: string) => {
