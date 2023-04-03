@@ -1,8 +1,9 @@
 import "server-only"
 import { HomePage, Settings, SubPage } from "@/types/typings"
-import { apiVersion, dataset, projectId, useCdn } from "lib/sanity.api"
 import { homePageQuery, pageQuery, settingsQuery } from "lib/sanity.queries"
 import { createClient } from "next-sanity"
+
+import { apiVersion, dataset, projectId, useCdn } from "@/lib/sanity.api"
 
 interface IToken {
   token?: string

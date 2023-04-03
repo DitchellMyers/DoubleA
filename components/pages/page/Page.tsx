@@ -22,8 +22,11 @@ export function Page({ data }: { data: SubPage }) {
         </div>
         {artists && (
           <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {artists.map((artist) => (
-              <div className="group relative aspect-video w-full rounded-lg border border-gray-950 md:brightness-50 md:hover:brightness-110">
+            {artists.map((artist, index) => (
+              <div
+                className="group relative aspect-video w-full rounded-lg border border-gray-950 md:brightness-50 md:hover:brightness-110"
+                key={index}
+              >
                 <Link
                   className={
                     "mx-auto flex h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white"

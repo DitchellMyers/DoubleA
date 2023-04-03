@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic"
 import { format } from "date-fns"
 import { de } from "date-fns/locale"
 
@@ -29,7 +30,7 @@ export const Header = ({ title, subtitle, eventDate }: HeaderProps) => {
   return (
     <>
       <Titles />
-      <Countdown date={eventDate} title="Festival Countdown"></Countdown>
+      {/* <Countdown date={eventDate} title="Festival Countdown"></Countdown> */}
     </>
   )
 }

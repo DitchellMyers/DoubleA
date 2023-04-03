@@ -5,8 +5,8 @@ import { motion, useScroll, useTransform } from "framer-motion"
 
 export default function BackgroundLayer() {
   const { scrollY } = useScroll()
-
   const [opacityRange, setOpacityRange] = useState([0, 0, 0, 0])
+  const opacity = useTransform(scrollY, opacityRange, [0, 0.5, 0.7, 0.9])
 
   useEffect(
     () =>
@@ -19,6 +19,5 @@ export default function BackgroundLayer() {
     []
   )
 
-  const opacity = useTransform(scrollY, opacityRange, [0, 0.5, 0.7, 0.9])
-  return <motion.div className="h-full w-full bg-gray-950" style={{ opacity: opacity }}></motion.div>
+  return <>{opacity && <motion.div className="h-full w-full bg-gray-950" style={{ opacity: opacity }}></motion.div>}</>
 }

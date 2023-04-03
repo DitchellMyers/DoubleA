@@ -2,30 +2,29 @@
  * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
  */
 
-import { visionTool } from '@sanity/vision'
-import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
-import { previewDocumentNode } from 'plugins/previewPane'
-import { productionUrl } from 'plugins/productionUrl'
-import { pageStructure, singletonPlugin } from 'plugins/settings'
-import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import duration from 'schemas/objects/duration'
-import milestone from 'schemas/objects/milestone'
-import { home } from 'schemas/singletons/home'
-import { settings } from 'schemas/singletons/settings'
-import { theme } from './theme'
-import { category } from './schemas/documents/category'
-import { artist } from './schemas/documents/artist'
-import { page } from './schemas/documents/page'
-import { workshop } from './schemas/documents/workshop'
-import { event } from './schemas/documents/event'
-import { sponsor } from './schemas/documents/sponsor'
-import { gallery } from './schemas/documents/gallery'
+import { visionTool } from "@sanity/vision"
+import { previewDocumentNode } from "plugins/previewPane"
+import { productionUrl } from "plugins/productionUrl"
+import { pageStructure, singletonPlugin } from "plugins/settings"
+import { defineConfig } from "sanity"
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash"
+import { deskTool } from "sanity/desk"
+import duration from "schemas/objects/duration"
+import milestone from "schemas/objects/milestone"
+import { home } from "schemas/singletons/home"
+import { settings } from "schemas/singletons/settings"
 
-const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+import { apiVersion, dataset, previewSecretId, projectId } from "@/lib/sanity.api"
+import { artist } from "./schemas/documents/artist"
+import { category } from "./schemas/documents/category"
+import { event } from "./schemas/documents/event"
+import { gallery } from "./schemas/documents/gallery"
+import { page } from "./schemas/documents/page"
+import { sponsor } from "./schemas/documents/sponsor"
+import { workshop } from "./schemas/documents/workshop"
+import { theme } from "./theme"
+
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Next.js Personal Website with Sanity.io"
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
@@ -39,9 +38,9 @@ export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
 ]
 
 export default defineConfig({
-  basePath: '/studio',
-  projectId: projectId || '',
-  dataset: dataset || '',
+  basePath: "/studio",
+  projectId: projectId || "",
+  dataset: dataset || "",
   title,
   schema: {
     // If you want more content types, you can add them to this array
