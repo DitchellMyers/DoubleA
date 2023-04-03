@@ -22,7 +22,7 @@ export function CustomPortableText({ className, value }: ICustomPortableText) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <div className={`${className}`}>{children}</div>
+        return <TypographyP>{children}</TypographyP>
       },
       h1: ({ children }) => {
         return (
