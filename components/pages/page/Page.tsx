@@ -13,9 +13,11 @@ export function Page({ data }: { data: SubPage }) {
   return (
     <>
       <div className="flex flex-col space-y-12">
-        <div className="drop-shadow-glow2">
-          <TypographyH1 className="flex h-full items-center justify-center">{alias ? alias : name}</TypographyH1>
-        </div>
+        {!content && (
+          <div className="drop-shadow-glow2">
+            <TypographyH1 className="flex h-full items-center justify-center">{alias ? alias : name}</TypographyH1>
+          </div>
+        )}
         {artists && (
           <Section>
             <SectionContent items={artists} category={slug} />
