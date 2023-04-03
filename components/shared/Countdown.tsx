@@ -51,9 +51,12 @@ export const Countdown = ({ date, title }: CountdownProps) => {
   const [state, dispatch] = useReducer<React.Reducer<State, Action>>(reducer, initialState)
 
   useEffect(() => {
-    setInterval(() => {
-      dispatch({ type: "updateTimer", payload: date })
-    }, 1000)
+    if (typeof window !== "undefined") {
+      const intervalId = setInterval(() => {
+        dispatch({ type: "updateTimer", payload: date })
+      }, 1000)
+      return () => clearInterval(intervalId)
+    }
   }, [date])
 
   return (
@@ -62,7 +65,9 @@ export const Countdown = ({ date, title }: CountdownProps) => {
       <div className="grid grid-cols-4 items-center justify-center lg:flex lg:gap-4">
         {Object.keys(state).map((timeUnit) => (
           <div className="mx-[5px] flex-row items-center text-center text-slate-300 lg:w-1/4" key={timeUnit}>
-            <TypographyP className="text-lg font-bold md:text-2xl lg:text-4xl">{state[timeUnit as keyof State]}</TypographyP>
+            <TypographyP className="text-lg font-bold md:text-2xl lg:text-4xl">
+              {state[timeUnit as keyof State]}
+            </TypographyP>
             <p className="text-base md:text-lg lg:text-xl">{timeUnit}</p>
           </div>
         ))}
