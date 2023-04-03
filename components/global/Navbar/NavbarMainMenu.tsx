@@ -8,7 +8,7 @@ interface INavbarMainMenu {
   menus: { [key: string]: boolean }
   items: NavigationLink[]
   toggle: (sMenu: string) => void
-  reset: (sMenu: string) => void
+  reset: () => void
 }
 
 const NavbarMainMenu = ({ menus, items, toggle, reset }: INavbarMainMenu) => {
@@ -30,7 +30,7 @@ const NavbarMainMenu = ({ menus, items, toggle, reset }: INavbarMainMenu) => {
                     {item.name} <AiOutlineRight />
                   </button>
                 ) : (
-                  <Link href={`/${item.slug}`} className="flex w-full justify-between" onClick={() => reset(item._id)}>
+                  <Link href={`/${item.slug}`} className="flex w-full justify-between" onClick={() => reset()}>
                     {item.name} <AiOutlineRight />
                   </Link>
                 )}

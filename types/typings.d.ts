@@ -1,4 +1,4 @@
-import type { Image, PortableTextBlock as Block, SanityDocument } from 'sanity'
+import type { PortableTextBlock as Block, Image, SanityDocument } from "sanity"
 
 interface ExtendedImage extends Image {
   beschreibung: string
@@ -52,7 +52,11 @@ export interface HomePage extends Page {
 
 export interface SubPage extends Page {
   content: Block[]
-  artist: Artist[]
+  artists: Artist[]
+  workshops: Workshop[]
+  events: Event[]
+  sponsors: Sponsor[]
+  galleries: Gallery[]
 }
 
 export interface Artist extends CoreObject {

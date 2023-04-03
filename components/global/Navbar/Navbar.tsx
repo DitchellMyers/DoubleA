@@ -39,8 +39,8 @@ export function Navbar({ items, logo }: INavbar) {
   }
 
   // Resets All Submenus
-  const resetMenus = (sMenu: string) => {
-    toggleSMenu(sMenu)
+  const resetMenus = () => {
+    setSMenus({})
     setOpen(false)
   }
 

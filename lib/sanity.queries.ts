@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity'
+import { groq } from "next-sanity"
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
@@ -41,14 +41,14 @@ export const settingsQuery = groq`
     }
   }
 `
-export const pageQuery = groq`*[_type == "page" && name == $name][0] {
+export const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
   ...,
   "slug": slug.current,
-  "artists": artists[]->,
-  "workshops": workshops[]->,
-  "sponsors": sponsors[]->,
-  "events": events[]->,
-  "galleries": galleries[]->,
+  "artists": artists[]->{..., "slug": slug.current},
+  "workshops": workshops[]->{..., "slug": slug.current},
+  "sponsors": sponsors[]->{..., "slug": slug.current},
+  "events": events[]->{..., "slug": slug.current},
+  "galleries": galleries[]->{..., "slug": slug.current},
 }
 `
 

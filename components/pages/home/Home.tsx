@@ -4,7 +4,7 @@ import SectionBG from "@/public/SectionBG.jpg"
 import { HomePage } from "@/types/typings"
 import { ScrollUp } from "components/shared/ScrollUp"
 
-import { Background } from "@/components/shared/Background"
+import { Background } from "@/components/shared/Background/Background"
 import { Section } from "@/components/ui/Section"
 import { Header } from "./Header"
 
