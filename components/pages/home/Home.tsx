@@ -21,7 +21,7 @@ export function Home({ data }: { data: HomePage }) {
           {pages.map((page, index) => (
             <Section key={index}>
               {page.slug && (
-                <div className="relative aspect-video w-full rounded border border-gray-950 opacity-100 drop-shadow-glow2 md:opacity-80 md:hover:opacity-100">
+                <div className="relative aspect-video w-full rounded border border-gray-950 opacity-100 drop-shadow-glow2 md:opacity-60 md:hover:opacity-100">
                   <Image
                     className="-z-10 max-w-full rounded"
                     src={SectionBG}
@@ -31,7 +31,7 @@ export function Home({ data }: { data: HomePage }) {
                   />
                   <Link
                     className={
-                      "mx-auto flex h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white drop-shadow-glow"
+                      "mx-auto flex h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white drop-shadow-glow md:drop-shadow-none md:hover:drop-shadow-glow"
                     }
                     href={page.slug}
                   >
