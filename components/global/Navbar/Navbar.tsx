@@ -53,7 +53,7 @@ export function Navbar({ items, logo }: INavbar) {
     <header
       className={`container fixed left-0 right-0 top-0 z-[120] mx-auto h-20 px-3 sm:px-0 lg:absolute ${
         ((pathName == "/" && bg) || pathName != "/") &&
-        "bg-gradient-to-b from-slate-900 from-85% via-slate-900 to-transparent to-100%"
+        "bg-gradient-to-b from-slate-950 from-85% via-slate-950 to-transparent to-100%"
       }`}
     >
       <nav className="relative flex h-full justify-between" aria-label="global">
