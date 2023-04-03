@@ -1,12 +1,6 @@
 import "@/styles/globals.css"
 import { Aldrich, Roboto } from "next/font/google"
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["100", "300", "400", "700", "900"],
-})
-
 const aldrich = Aldrich({
   subsets: ["latin"],
   display: "swap",

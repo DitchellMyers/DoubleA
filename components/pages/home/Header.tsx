@@ -30,7 +30,7 @@ export const Header = ({ title, subtitle, eventDate }: HeaderProps) => {
   return (
     <>
       <Titles />
-      {/* <Countdown date={eventDate} title="Festival Countdown"></Countdown> */}
+      <Countdown date={eventDate} title="Festival Countdown"></Countdown>
     </>
   )
 }
