@@ -19,7 +19,7 @@ interface IRootLayout {
 
 export default async function RootLayout({ children }: IRootLayout) {
   return (
-    <html lang="de" className={`bg-slate-950 text-gray-300 antialiased ${aldrich.className}`}>
+    <html lang="de" className={`bg-slate-900 text-gray-300 antialiased ${aldrich.className}`}>
       <body className="min-h-screen">{children}</body>
     </html>
   )
