@@ -20,5 +20,5 @@ export default function BackgroundLayer() {
   )
 
   const opacity = useTransform(scrollY, opacityRange, [0, 0.5, 0.7, 0.9])
-  return <motion.div className="h-full w-full bg-slate-950" style={{ opacity: opacity }}></motion.div>
+  return <motion.div className="h-full w-full bg-gray-950" style={{ opacity: opacity }}></motion.div>
 }
