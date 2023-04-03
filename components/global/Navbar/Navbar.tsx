@@ -77,7 +77,7 @@ export function Navbar({ items, logo }: INavbar) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
-              className="fixed bottom-0 left-0 right-0 top-0 z-[100] bg-slate-900"
+              className="fixed bottom-0 left-0 right-0 top-0 z-[100] bg-slate-950"
             >
               <div className="container mx-auto h-full pb-10 pt-20">
                 <div className="relative h-full">

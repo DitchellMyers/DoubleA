@@ -15,7 +15,7 @@ export function Footer({ items, socials, sponsors }: IFooter) {
           {Object.entries(socials).map(([key, value], index) => (
             <Link
               href={value}
-              className="border-[0.5px] border-gray-300 bg-slate-900 p-3 uppercase hover:bg-black"
+              className="border-[0.5px] border-gray-300 bg-slate-950 p-3 uppercase hover:bg-black"
               target="_blank"
               key={index}
             >
@@ -27,7 +27,7 @@ export function Footer({ items, socials, sponsors }: IFooter) {
           {items.map((item, index) => (
             <Link
               href={`/${item.slug}`}
-              className="border-[0.5px] border-gray-300 bg-slate-900 p-3 uppercase hover:bg-black"
+              className="border-[0.5px] border-gray-300 bg-slate-950 p-3 uppercase hover:bg-black"
               key={index}
             >
               {item.slug}
