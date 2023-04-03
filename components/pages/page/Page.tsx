@@ -10,10 +10,12 @@ import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 export function Page({ data }: { data: SubPage }) {
   // Default to an empty object to allow previews on non-existent documents
   const { name, alias, content, artists, workshops, events, galleries, sponsors, slug, meta } = data
+  const hasH1 = content && content.some((obj) => "style" in obj && obj.style === "h1")
+  console.log(hasH1)
   return (
     <>
       <div className="flex flex-col space-y-12">
-        {!content && (
+        {!hasH1 && (
           <div className="drop-shadow-glow2">
             <TypographyH1 className="flex h-full items-center justify-center">{alias ? alias : name}</TypographyH1>
           </div>

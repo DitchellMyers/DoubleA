@@ -22,7 +22,7 @@ export function CustomPortableText({ className, value }: ICustomPortableText) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <TypographyP>{children}</TypographyP>
+        return <TypographyP className="flex flex-col">{children}</TypographyP>
       },
       h1: ({ children }) => {
         return (
@@ -59,7 +59,7 @@ export function CustomPortableText({ className, value }: ICustomPortableText) {
         return <span className={"font-bold"}>{children}</span>
       },
       em: ({ children }) => {
-        return <div className="w-full text-center italic">{children}</div>
+        return <span className="w-full text-center italic">{children}</span>
       },
     },
     list: ({ children }) => {
