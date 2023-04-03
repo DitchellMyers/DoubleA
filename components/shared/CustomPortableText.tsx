@@ -1,6 +1,13 @@
-import { PortableText, PortableTextComponents } from '@portabletext/react'
-import type { PortableTextBlock as Block, Image } from 'sanity'
-import SanityImage from './SanityImage'
+import { PortableText, PortableTextComponents } from "@portabletext/react"
+import type { PortableTextBlock as Block, Image } from "sanity"
+
+import { TypographyH1 } from "../ui/Typography/TypographyH1"
+import { TypographyH2 } from "../ui/Typography/TypographyH2"
+import { TypographyH3 } from "../ui/Typography/TypographyH3"
+import { TypographyH4 } from "../ui/Typography/TypographyH4"
+import { TypographyList } from "../ui/Typography/TypographyList"
+import { TypographyP } from "../ui/Typography/TypographyP"
+import SanityImage from "./SanityImage"
 
 interface ICustomPortableText {
   className?: string
@@ -19,62 +26,56 @@ export function CustomPortableText({ className, value }: ICustomPortableText) {
       },
       h1: ({ children }) => {
         return (
-          <h1 className="py-7 text-center text-3xl font-bold underline lg:text-6xl">
+          <TypographyH1 center highlight>
             {children}
-          </h1>
+          </TypographyH1>
         )
       },
       h2: ({ children }) => {
-        return (
-          <h2 className="py-5 text-xl font-bold lg:text-3xl">{children}</h2>
-        )
+        return <TypographyH2>{children}</TypographyH2>
       },
       h3: ({ children }) => {
-        return <h3 className={'py-5 text-2xl font-bold'}>{children}</h3>
+        return <TypographyH3>{children}</TypographyH3>
+      },
+      h4: ({ children }) => {
+        return <TypographyH4>{children}</TypographyH4>
+      },
+      h5: ({ children }) => {
+        return <TypographyP>{children}</TypographyP>
+      },
+      h6: ({ children }) => {
+        return <TypographyP>{children}</TypographyP>
       },
     },
     marks: {
       link: ({ children, value }) => {
         return (
-          <a
-            className="underline transition hover:opacity-50"
-            href={value?.href}
-            rel="noreferrer noopener"
-          >
+          <a className="underline transition hover:opacity-50" href={value?.href} rel="noreferrer noopener">
             {children}
           </a>
         )
       },
       strong: ({ children }) => {
-        return <span className={'font-bold'}>{children}</span>
+        return <span className={"font-bold"}>{children}</span>
       },
       em: ({ children }) => {
         return <div className="w-full text-center italic">{children}</div>
       },
     },
     list: ({ children }) => {
-      return <ul className="pl-5">{children}</ul>
+      return <TypographyList>{children}</TypographyList>
     },
     listItem: {
       bullet: ({ children }) => {
-        return <li className="list-disc pl-2">{children}</li>
+        return <li>{children}</li>
       },
     },
     types: {
       image: ({ value }: ITypesImage) => {
         return (
           <div className="my-6 space-y-2">
-            <SanityImage
-              image={value}
-              alt={value.alt}
-              width={1000}
-              height={1000}
-            />
-            {value?.caption && (
-              <div className="font-sans text-sm text-gray-600">
-                {value.caption}
-              </div>
-            )}
+            <SanityImage image={value} alt={value.alt} width={1000} height={1000} />
+            {value?.caption && <div className="font-sans text-sm text-gray-600">{value.caption}</div>}
           </div>
         )
       },

@@ -14,7 +14,7 @@ export function Home({ data }: { data: HomePage }) {
     <>
       <Background image={backgroundImage} />
       <div className="flex flex-col space-y-12">
-        <Section className="h-[calc(100vh-80px)]" direction={"vertical"}>
+        <Section className="h-[calc(100vh-80px)]" center>
           <Header title={name} subtitle={"THE ONES WHO CARE"} eventDate={eventDate} />
         </Section>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">

@@ -54,6 +54,7 @@ export const sponsor = defineType({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      initialValue: () => new Date().toISOString(),
     }),
   ],
   preview: {
