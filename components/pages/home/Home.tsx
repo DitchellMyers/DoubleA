@@ -31,7 +31,7 @@ export function Home({ data }: { data: HomePage }) {
                   />
                   <Link
                     className={
-                      "mx-auto flex h-full w-full items-center justify-center text-center text-5xl/7 uppercase text-white drop-shadow-glow"
+                      "mx-auto flex h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white drop-shadow-glow"
                     }
                     href={page.slug}
                   >
