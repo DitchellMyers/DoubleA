@@ -19,7 +19,7 @@ export default async function IndexRoute({ children }: IIndexRoute) {
   }
 
   return (
-    <div className="container mx-auto mb-20 space-y-20 px-5 md:px-0">
+    <div className="container mx-auto mb-20 space-y-20 px-5">
       {token && <PreviewBanner />}
       <Navbar items={settings.navItems} logo={settings.navImage} />
       <main className="flex flex-1 flex-col">{children}</main>

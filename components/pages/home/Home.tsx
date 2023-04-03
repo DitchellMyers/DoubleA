@@ -17,12 +17,18 @@ export function Home({ data }: { data: HomePage }) {
         <Section className="h-[calc(100vh-80px)]" direction={"vertical"}>
           <Header title={name} subtitle={"THE ONES WHO CARE"} eventDate={eventDate} />
         </Section>
-        <div className="grid grid-flow-row gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
           {pages.map((page, index) => (
             <Section key={index}>
               {page.slug && (
-                <div className="relative h-[250px] w-full rounded border border-slate-950 opacity-100 drop-shadow-glow2 md:opacity-80 md:hover:opacity-100">
-                  <Image className="-z-10 rounded" src={SectionBG} alt="test" fill />
+                <div className="relative aspect-video w-full rounded border border-slate-950 opacity-100 drop-shadow-glow2 md:opacity-80 md:hover:opacity-100">
+                  <Image
+                    className="-z-10 max-w-full rounded"
+                    src={SectionBG}
+                    alt="test"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                   <Link
                     className={
                       "mx-auto flex h-full w-full items-center justify-center text-center text-5xl/7 uppercase text-white drop-shadow-glow"
