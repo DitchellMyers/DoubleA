@@ -39,7 +39,7 @@ export function Page({ data }: { data: SubPage }) {
           </Section>
         )}
         {content && (
-          <Section className="font-sans">
+          <Section className="space-y-4 font-sans">
             <CustomPortableText value={content} type={{}} />
           </Section>
         )}

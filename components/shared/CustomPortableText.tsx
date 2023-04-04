@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { PortableText, PortableTextComponents } from "@portabletext/react"
 import type { PortableTextBlock as Block, Image } from "sanity"
 
@@ -63,13 +64,13 @@ export function CustomPortableText({ type, value }: ICustomPortableText) {
     marks: {
       link: ({ children, value }) => {
         return (
-          <a
+          <Link
             className={cn("underline transition hover:opacity-50", type?.link && `${type.link}`)}
             href={value?.href}
             rel="noreferrer noopener"
           >
             {children}
-          </a>
+          </Link>
         )
       },
       strong: ({ children }) => {
