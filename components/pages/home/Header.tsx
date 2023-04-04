@@ -16,13 +16,13 @@ interface HeaderProps {
 export const Header = ({ title, subtitle, eventDate }: HeaderProps) => {
   const Titles = () => {
     return (
-      <div className="space-y-1 text-center drop-shadow-glow2">
+      <div className="text-center drop-shadow-glow2">
         <TypographyP className="text-3xl font-bold">
           {format(new Date(eventDate), "dd MMMM yyyy", { locale: de })}
         </TypographyP>
-        <TypographyH1 className="text-5xl font-bold">{title}</TypographyH1>
+        <TypographyH1 className="text-5xl font-bold md:text-6xl lg:text-8xl">{title}</TypographyH1>
         <hr className="mx-auto w-3/5 border-t border-gray-300" />
-        <TypographyH2 className="text-4xl">{subtitle}</TypographyH2>
+        <TypographyH2 className="m-0 mt-2 text-4xl md:text-5xl lg:text-7xl">{subtitle}</TypographyH2>
       </div>
     )
   }

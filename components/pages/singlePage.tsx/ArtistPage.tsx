@@ -36,7 +36,11 @@ export const ArtistPage = ({ artist }: { artist: Artist }) => {
           </div>
         )}
       </div>
-      {content && <CustomPortableText value={content}></CustomPortableText>}
+      {content && (
+        <div className="font-sans">
+          <CustomPortableText value={content}></CustomPortableText>
+        </div>
+      )}
       {(socials.youtube || socials.spotify) && (
         <div className="grid grid-cols-1 gap-10 font-sans md:grid-cols-2">
           {iframeYoutube && <YoutubeIFrame link={iframeYoutube} />}
