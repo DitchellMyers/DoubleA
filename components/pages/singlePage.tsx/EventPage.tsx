@@ -23,18 +23,18 @@ export const EventPage = ({ event }: { event: Event }) => {
         <TypographyH1 highlight>{name}</TypographyH1>
       </div>
       {content && (
-        <div className="mx-auto w-3/4 space-y-5">
+        <div className="mx-auto w-3/4 space-y-5 font-sans">
           {duration && (
             <div className="flex flex-col justify-start">
-              <TypographyP>
+              <TypographyP className="[&:not(:first-child)]:mt-0">
                 <span className="inline-block w-[85px]">Beginn: </span>
                 {format(new Date(duration.start), "dd.MM.yyy H:mm")}
               </TypographyP>
-              <TypographyP>
+              <TypographyP className="[&:not(:first-child)]:mt-0">
                 <span className="inline-block w-[85px]">Ende: </span>
                 {format(new Date(duration.end), "dd.MM.yyy H:mm")}
               </TypographyP>
-              <TypographyP>
+              <TypographyP className="[&:not(:first-child)]:mt-0">
                 <span className="inline-block w-[85px]">Location: </span>
                 {"Frapé Aalen"}
               </TypographyP>

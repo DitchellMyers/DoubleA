@@ -21,7 +21,7 @@ export const WorkshopPage = ({ workshop }: { workshop: Workshop }) => {
         <TypographyH1 highlight>{name}</TypographyH1>
       </div>
       {content && (
-        <div className="mx-auto w-3/4">
+        <div className="font-sans">
           <CustomPortableText value={content}></CustomPortableText>
         </div>
       )}
