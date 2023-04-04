@@ -1,6 +1,7 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react"
 import type { PortableTextBlock as Block, Image } from "sanity"
 
+import { cn } from "@/lib/utils"
 import { TypographyH1 } from "../ui/Typography/TypographyH1"
 import { TypographyH2 } from "../ui/Typography/TypographyH2"
 import { TypographyH3 } from "../ui/Typography/TypographyH3"
@@ -10,7 +11,19 @@ import { TypographyP } from "../ui/Typography/TypographyP"
 import SanityImage from "./Sanity/SanityImage"
 
 interface ICustomPortableText {
-  className?: string
+  type?: {
+    h1?: string
+    h2?: string
+    h3?: string
+    h4?: string
+    normal?: string
+    link?: string
+    strong?: string
+    em?: string
+    list?: string
+    bullet?: string
+    image?: string
+  }
   value: Block[]
 }
 
@@ -18,56 +31,62 @@ interface ITypesImage {
   value: Image & { alt: string; caption?: string }
 }
 
-export function CustomPortableText({ className, value }: ICustomPortableText) {
+export function CustomPortableText({ type, value }: ICustomPortableText) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <TypographyP className="flex flex-col">{children}</TypographyP>
+        return <TypographyP className={cn(type?.normal && `${type.normal}`)}>{children}</TypographyP>
       },
       h1: ({ children }) => {
         return (
-          <TypographyH1 center highlight className="hyphens-auto" lang="de">
+          <TypographyH1 center highlight className={cn("hyphens-auto text-3xl", type?.h1 && `${type.h1}`)} lang="de">
             {children}
           </TypographyH1>
         )
       },
       h2: ({ children }) => {
-        return <TypographyH2>{children}</TypographyH2>
+        return <TypographyH2 className={cn(type?.h2 && `${type.h2}`)}>{children}</TypographyH2>
       },
       h3: ({ children }) => {
-        return <TypographyH3>{children}</TypographyH3>
+        return <TypographyH3 className={cn(type?.h3 && `${type.h3}`)}>{children}</TypographyH3>
       },
       h4: ({ children }) => {
-        return <TypographyH4>{children}</TypographyH4>
+        return <TypographyH4 className={cn(type?.h4 && `${type.h4}`)}>{children}</TypographyH4>
       },
       h5: ({ children }) => {
-        return <TypographyP>{children}</TypographyP>
+        return <TypographyP className={cn(type?.normal && `${type.normal}`)}>{children}</TypographyP>
       },
       h6: ({ children }) => {
-        return <TypographyP>{children}</TypographyP>
+        return <TypographyP className={cn(type?.normal && `${type.normal}`)}>{children}</TypographyP>
       },
     },
     marks: {
       link: ({ children, value }) => {
         return (
-          <a className="underline transition hover:opacity-50" href={value?.href} rel="noreferrer noopener">
+          <a
+            className={cn("underline transition hover:opacity-50", type?.link && `${type.link}`)}
+            href={value?.href}
+            rel="noreferrer noopener"
+          >
             {children}
           </a>
         )
       },
       strong: ({ children }) => {
-        return <span className={"font-bold"}>{children}</span>
+        return <span className={cn("font-bold", type?.strong && `${type.strong}`)}>{children}</span>
       },
       em: ({ children }) => {
-        return <span className="w-full text-center italic">{children}</span>
+        return (
+          <span className={cn("inline-block w-full text-center italic", type?.em && `${type.em}`)}>{children}</span>
+        )
       },
     },
     list: ({ children }) => {
-      return <TypographyList>{children}</TypographyList>
+      return <TypographyList className={cn(type?.normal && `${type.normal}`)}>{children}</TypographyList>
     },
     listItem: {
       bullet: ({ children }) => {
-        return <li>{children}</li>
+        return <li className={cn(type?.normal && `${type.normal}`)}>{children}</li>
       },
     },
     types: {

@@ -40,7 +40,7 @@ export function Page({ data }: { data: SubPage }) {
         )}
         {content && (
           <Section>
-            <CustomPortableText value={content} />
+            <CustomPortableText value={content} type={{}} />
           </Section>
         )}
       </div>
