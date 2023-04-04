@@ -3,7 +3,7 @@ import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
 import { CustomPortableText } from "@/components/shared/CustomPortableText"
-import SanityImage from "@/components/shared/SanityImage"
+import SanityImage from "@/components/shared/Sanity/SanityImage"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 import { TypographyP } from "@/components/ui/Typography/TypographyP"
 

@@ -2,7 +2,7 @@ import { Workshop } from "@/types/typings"
 
 import { cn } from "@/lib/utils"
 import { CustomPortableText } from "@/components/shared/CustomPortableText"
-import SanityImage from "@/components/shared/SanityImage"
+import SanityImage from "@/components/shared/Sanity/SanityImage"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 
 export const WorkshopPage = ({ workshop }: { workshop: Workshop }) => {

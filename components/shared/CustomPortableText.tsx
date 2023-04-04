@@ -7,7 +7,7 @@ import { TypographyH3 } from "../ui/Typography/TypographyH3"
 import { TypographyH4 } from "../ui/Typography/TypographyH4"
 import { TypographyList } from "../ui/Typography/TypographyList"
 import { TypographyP } from "../ui/Typography/TypographyP"
-import SanityImage from "./SanityImage"
+import SanityImage from "./Sanity/SanityImage"
 
 interface ICustomPortableText {
   className?: string

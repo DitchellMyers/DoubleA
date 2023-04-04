@@ -1,7 +1,7 @@
 import { Gallery } from "@/types/typings"
 
 import { cn } from "@/lib/utils"
-import SanityImage from "@/components/shared/SanityImage"
+import SanityImage from "@/components/shared/Sanity/SanityImage"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 
 export const GalleryPage = ({ gallery }: { gallery: Gallery }) => {

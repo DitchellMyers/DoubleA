@@ -61,6 +61,8 @@ export interface SubPage extends Page {
 
 export interface Artist extends CoreObject {
   socials: { [key: string]: string }
+  iframeYoutube: string
+  iframeSpotify: string
 }
 
 export interface Workshop extends CoreObject {}

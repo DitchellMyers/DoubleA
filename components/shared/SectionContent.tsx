@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Artist, Event, Gallery, Workshop } from "@/types/typings"
 
-import SanityImage from "./SanityImage"
+import SanityImage from "./Sanity/SanityImage"
 
 interface SectionContentProps {
   items: Artist[] | Workshop[] | Event[] | Gallery[]

@@ -3,12 +3,14 @@ import { Artist } from "@/types/typings"
 
 import { cn } from "@/lib/utils"
 import { CustomPortableText } from "@/components/shared/CustomPortableText"
-import SanityImage from "@/components/shared/SanityImage"
+import SanityImage from "@/components/shared/Sanity/SanityImage"
+import { SpotifyIFrame } from "@/components/shared/SpotifyIFrame"
+import { YoutubeIFrame } from "@/components/shared/YoutubeIFrame"
 import { getIcon } from "@/components/shared/getIcon"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 
 export const ArtistPage = ({ artist }: { artist: Artist }) => {
-  const { _type, name, image, socials, content } = artist
+  const { _type, name, image, socials, content, iframeSpotify, iframeYoutube } = artist
   return (
     <div className="space-y-10">
       <div className="flex w-full flex-col items-center justify-center space-y-5">
@@ -34,9 +36,11 @@ export const ArtistPage = ({ artist }: { artist: Artist }) => {
           </div>
         )}
       </div>
-      {content && (
-        <div className="mx-auto w-3/4">
-          <CustomPortableText value={content}></CustomPortableText>
+      {content && <CustomPortableText value={content}></CustomPortableText>}
+      {(socials.youtube || socials.spotify) && (
+        <div className="grid grid-cols-1 gap-10 font-sans md:grid-cols-2">
+          {iframeYoutube && <YoutubeIFrame link={iframeYoutube} />}
+          {iframeSpotify && <SpotifyIFrame link={iframeSpotify} />}
         </div>
       )}
     </div>

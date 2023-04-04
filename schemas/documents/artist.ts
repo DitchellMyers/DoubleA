@@ -134,6 +134,26 @@ export const artist = defineType({
       group: "content",
       fieldset: "content",
     },
+    defineField({
+      name: "iframeYoutube",
+      title: "IFrame für Youtube",
+      type: "url",
+      group: "social",
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ["http", "https"],
+        }),
+    }),
+    defineField({
+      name: "iframeSpotify",
+      title: "IFrame für Spotify",
+      type: "url",
+      group: "social",
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ["http", "https"],
+        }),
+    }),
     {
       name: "publishedAt",
       title: "Published at",
