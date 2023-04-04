@@ -26,7 +26,7 @@ export function CustomPortableText({ className, value }: ICustomPortableText) {
       },
       h1: ({ children }) => {
         return (
-          <TypographyH1 center highlight>
+          <TypographyH1 center highlight className="hyphens-auto" lang="de">
             {children}
           </TypographyH1>
         )
