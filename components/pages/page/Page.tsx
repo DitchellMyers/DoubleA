@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { SubPage } from "@/types/typings"
 import { ScrollUp } from "components/shared/ScrollUp"
 
@@ -11,7 +10,6 @@ export function Page({ data }: { data: SubPage }) {
   // Default to an empty object to allow previews on non-existent documents
   const { name, alias, content, artists, workshops, events, galleries, sponsors, slug, meta } = data
   const hasH1 = content && content.some((obj) => "style" in obj && obj.style === "h1")
-  console.log(hasH1)
   return (
     <>
       <div className="flex flex-col space-y-12">

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+import { redirect } from "next/navigation"
 import { Page } from "components/pages/page/Page"
 import { PagePreview } from "components/pages/page/PagePreview"
 import { PreviewSuspense } from "components/preview/PreviewSuspense"
@@ -7,13 +7,13 @@ import { getPreviewToken } from "lib/sanity.server.preview"
 
 import { getPage } from "@/lib/sanity.client"
 
-export default async function PageSlugRoute({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function PageSlugRoute({ params }: { params: { category: string } }) {
+  const { category } = params
   const token = getPreviewToken()
-  const data = await getPage({ token: token, slug: slug })
+  const data = await getPage({ token: token, category: category })
 
   if (!data && !token) {
-    notFound()
+    redirect("/")
   }
 
   return (
@@ -27,7 +27,7 @@ export default async function PageSlugRoute({ params }: { params: { slug: string
             </PreviewWrapper>
           }
         >
-          <PagePreview token={token} slug={params.slug} />
+          <PagePreview token={token} slug={params.category} />
         </PreviewSuspense>
       ) : (
         <Page data={data} />

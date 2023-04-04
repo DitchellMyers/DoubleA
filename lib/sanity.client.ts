@@ -1,13 +1,14 @@
 import "server-only"
-import { HomePage, Settings, SubPage } from "@/types/typings"
-import { homePageQuery, pageQuery, settingsQuery } from "lib/sanity.queries"
+import { Artist, Event, Gallery, HomePage, Settings, Sponsor, SubPage, Workshop } from "@/types/typings"
+import { contentQuery, homePageQuery, pageQuery, settingsQuery } from "lib/sanity.queries"
 import { createClient } from "next-sanity"
 
 import { apiVersion, dataset, projectId, useCdn } from "@/lib/sanity.api"
 
 interface IToken {
   token?: string
-  slug?: string
+  category?: string
+  id?: string
 }
 
 const sanityClient = (token?: string) => {
@@ -22,6 +23,14 @@ export async function getSettings({ token }: IToken): Promise<Settings> {
   return await sanityClient(token).fetch(settingsQuery)
 }
 
-export async function getPage({ token, slug }: IToken): Promise<SubPage> {
-  return await sanityClient(token).fetch(pageQuery, { slug })
+export async function getPage({ token, category }: IToken): Promise<SubPage> {
+  return await sanityClient(token).fetch(pageQuery, { category })
+}
+
+export async function getContent({
+  token,
+  category,
+  id,
+}: IToken): Promise<Artist | Workshop | Event | Sponsor | Gallery> {
+  return await sanityClient(token).fetch(contentQuery, { category, id })
 }

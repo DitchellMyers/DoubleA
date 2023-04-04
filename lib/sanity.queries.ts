@@ -41,7 +41,7 @@ export const settingsQuery = groq`
     }
   }
 `
-export const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
+export const pageQuery = groq`*[_type == "page" && slug.current == $category][0] {
   ...,
   "slug": slug.current,
   "artists": artists[]->{..., "slug": slug.current},
@@ -51,6 +51,7 @@ export const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
   "galleries": galleries[]->{..., "slug": slug.current},
 }
 `
+export const contentQuery = groq`*[_type == $category && slug.current == $id][0]`
 
 export const artistPageQuery = groq`*[_type == "page" && name == "Artists"][0] {
   ...,

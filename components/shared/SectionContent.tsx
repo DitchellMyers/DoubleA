@@ -23,7 +23,7 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
                 className={
                   "relative mx-auto flex aspect-video h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white"
                 }
-                href={`/${category}/${item.slug}`}
+                href={`/${item._type}/${item.slug}`}
               >
                 <SanityImage
                   className={"-z-10 rounded-lg border border-gray-950"}

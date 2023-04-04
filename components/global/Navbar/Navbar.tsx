@@ -7,8 +7,6 @@ import { ExtendedImage, NavigationLink } from "@/types/typings"
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion"
 import { Fade } from "hamburger-react"
 
-import { cn } from "@/lib/utils"
-import ImageLink from "@/components/shared/ImageLink"
 import SanityImage from "@/components/shared/SanityImage"
 import NavbarMainMenu from "./NavbarMainMenu"
 import NavbarSubMenu from "./NavbarSubMenu"
