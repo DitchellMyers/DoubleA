@@ -29,8 +29,8 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
                   className={"-z-10 rounded-lg border border-gray-950"}
                   image={item.image}
                   alt={item.name}
-                  height={320}
-                  width={640}
+                  height={540}
+                  width={960}
                 />
                 <span className="flex h-1/3 w-full items-center justify-center self-end group-hover:drop-shadow-glow2">
                   {item.name}
