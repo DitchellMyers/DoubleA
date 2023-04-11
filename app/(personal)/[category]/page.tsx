@@ -23,7 +23,6 @@ export default async function PageSlugRoute({ params }: { params: { category: st
           fallback={
             <PreviewWrapper>
               <Page data={data} />
-              <div></div>
             </PreviewWrapper>
           }
         >

@@ -9,16 +9,13 @@ import { TypographyP } from "@/components/ui/Typography/TypographyP"
 
 export const EventPage = ({ event }: { event: Event }) => {
   const { _type, name, image, events, content, duration } = event
+  const square = ["event", "gallery"].some((x) => x === _type) ? true : false
+
   return (
     <div className="space-y-10">
       <div className="flex w-full flex-col items-center justify-center space-y-5">
-        <div
-          className={cn(
-            "relative w-3/4 lg:w-1/3",
-            ["event", "gallery"].some((x) => x === _type) ? "aspect-square" : "aspect-video"
-          )}
-        >
-          <SanityImage image={image} alt={name} />
+        <div className={cn("relative w-3/4 lg:w-1/3", square ? "aspect-square" : "aspect-video")}>
+          <SanityImage image={image} alt={name} width={square ? 1000 : 960} height={square ? 1000 : 540} />
         </div>
         <TypographyH1 highlight>{name}</TypographyH1>
       </div>
