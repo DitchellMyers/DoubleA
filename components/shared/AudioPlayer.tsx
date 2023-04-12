@@ -4,8 +4,9 @@ interface AudioPlayerProps {
 
 export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   return (
-    <audio className="hidden" loop autoPlay>
-      <source src={src} type="audio/mp3" />
-    </audio>
+    <>
+      <iframe className="hidden" allow="autoplay" src={"/silence.mp3"} id="audio" />
+      <audio autoPlay loop src={src}></audio>
+    </>
   )
 }
