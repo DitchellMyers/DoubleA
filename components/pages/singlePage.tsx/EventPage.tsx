@@ -13,7 +13,7 @@ export const EventPage = ({ event }: { event: Event }) => {
   return (
     <div className="space-y-10">
       <div className={cn("relative mx-auto aspect-square w-full max-w-[500px]")}>
-        <SanityImage image={image} alt={name} width={500} height={500} />
+        <SanityImage image={image} alt={name} width={500} height={500} priority />
       </div>
       <div className="mt-3 flex w-full flex-col items-center justify-center space-y-3 px-5 md:mt-5 md:space-y-5 lg:mt-10 lg:space-y-10">
         <TypographyH1 center highlight>

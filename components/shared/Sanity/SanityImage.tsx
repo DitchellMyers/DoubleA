@@ -11,9 +11,17 @@ interface ISanityImage {
   className?: string
   width?: number
   height?: number
+  priority?: boolean
 }
 
-export default function SanityImage({ image, alt, width = 1000, height = 1000, className }: ISanityImage) {
+export default function SanityImage({
+  image,
+  alt,
+  width = 1000,
+  height = 1000,
+  className,
+  priority = false,
+}: ISanityImage) {
   const imageUrl = image && urlForImage(image)?.size(width, height).fit("crop").url()
 
   return (
@@ -23,7 +31,7 @@ export default function SanityImage({ image, alt, width = 1000, height = 1000, c
           className={cn("object-cover object-center", className)}
           alt={alt}
           fill
-          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          priority={priority}
           src={imageUrl}
         />
       )}
