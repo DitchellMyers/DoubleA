@@ -12,7 +12,7 @@ export function Page({ data }: { data: SubPage }) {
   const hasH1 = content && content.some((obj) => "style" in obj && obj.style === "h1")
   return (
     <>
-      <div className="flex flex-col space-y-12">
+      <div className="flex flex-col space-y-3 px-5 md:space-y-5 lg:space-y-10">
         {!hasH1 && (
           <div className="drop-shadow-glow2">
             <TypographyH1 className="flex h-full items-center justify-center">{alias ? alias : name}</TypographyH1>

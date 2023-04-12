@@ -13,14 +13,14 @@ export const ArtistPage = ({ artist }: { artist: Artist }) => {
   const { _type, name, image, socials, content, iframeSpotify, iframeYoutube } = artist
   const square = ["event", "gallery"].some((x) => x === _type) ? true : false
   return (
-    <div className="space-y-10">
-      <div className="flex w-full flex-col items-center justify-center space-y-5">
-        <div className={cn("relative w-3/4 lg:w-1/3", square ? "aspect-square" : "aspect-video")}>
-          <SanityImage image={image} alt={name} width={square ? 1000 : 960} height={square ? 1000 : 540} />
-        </div>
+    <div className="flex flex-col lg:space-y-10">
+      <div className={cn("relative mx-auto w-full max-w-[1200px]", square ? "aspect-square" : "aspect-video")}>
+        <SanityImage image={image} alt={name} width={square ? 1500 : 1920} height={square ? 1500 : 1080} />
+      </div>
+      <div className="mt-3 flex w-full flex-col items-center justify-center space-y-3 px-5 md:mt-5 md:space-y-5 lg:mt-10 lg:space-y-10">
         <TypographyH1 highlight>{name}</TypographyH1>
         {socials && (
-          <div className="flex flex-row gap-5 pt-2">
+          <div className="flex flex-row gap-5 lg:mt-10">
             {Object.entries(socials).map(
               ([key, value], index) =>
                 value && (
@@ -31,18 +31,18 @@ export const ArtistPage = ({ artist }: { artist: Artist }) => {
             )}
           </div>
         )}
+        {content && (
+          <div className="font-sans">
+            <CustomPortableText value={content}></CustomPortableText>
+          </div>
+        )}
+        {(socials.youtube || socials.spotify) && (
+          <div className="grid w-11/12 grid-cols-1 gap-10 font-sans md:grid-cols-2">
+            {iframeYoutube && <YoutubeIFrame link={iframeYoutube} />}
+            {iframeSpotify && <SpotifyIFrame link={iframeSpotify} />}
+          </div>
+        )}
       </div>
-      {content && (
-        <div className="font-sans">
-          <CustomPortableText value={content}></CustomPortableText>
-        </div>
-      )}
-      {(socials.youtube || socials.spotify) && (
-        <div className="grid grid-cols-1 gap-10 font-sans md:grid-cols-2">
-          {iframeYoutube && <YoutubeIFrame link={iframeYoutube} />}
-          {iframeSpotify && <SpotifyIFrame link={iframeSpotify} />}
-        </div>
-      )}
     </div>
   )
 }

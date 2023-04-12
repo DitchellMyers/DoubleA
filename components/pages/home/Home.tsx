@@ -13,7 +13,7 @@ export function Home({ data }: { data: HomePage }) {
   return (
     <>
       <Background image={backgroundImage} />
-      <div className="flex flex-col space-y-12">
+      <div className="flex flex-col space-y-12 px-5">
         <Section className="h-[calc(100vh-80px)]" center>
           <Header title={name} subtitle={"THE ONES WHO CARE"} eventDate={eventDate} />
         </Section>

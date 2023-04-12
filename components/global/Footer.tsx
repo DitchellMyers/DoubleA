@@ -9,7 +9,7 @@ interface IFooter {
 
 export function Footer({ items, socials, sponsors }: IFooter) {
   return (
-    <footer className="container mx-auto px-3 sm:px-0">
+    <footer className="container mx-auto px-8 sm:px-0">
       <section className="grid grid-cols-2 font-bold">
         <div className="flex flex-col">
           {Object.entries(socials).map(([key, value], index) => (

@@ -11,7 +11,7 @@ interface SectionContentProps {
 export const SectionContent = ({ items, category }: SectionContentProps) => {
   const currentDate = new Date()
   return (
-    <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
       {items.map((item: Artist | Workshop | Event | Gallery, index) => (
         <>
           {new Date(item.publishedAt) < currentDate && (

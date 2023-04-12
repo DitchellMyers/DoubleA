@@ -23,7 +23,7 @@ export default function SanityImage({ image, alt, width = 1000, height = 1000, c
           className={cn("object-cover object-center", className)}
           alt={alt}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           src={imageUrl}
         />
       )}

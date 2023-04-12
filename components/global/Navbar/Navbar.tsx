@@ -44,14 +44,14 @@ export function Navbar({ items, logo }: INavbar) {
 
   // check ScrollY for homepage => sets Backgroundcolor on Navbar if necessary
   useMotionValueEvent(scrollY, "change", (latest) => {
-    latest >= window.innerHeight * 0.5 ? setBG(true) : setBG(false)
+    latest >= window.innerHeight * 0.3 ? setBG(true) : setBG(false)
   })
 
   return (
-    <header
-      className={`container fixed left-0 right-0 top-0 z-[120] mx-auto h-20 px-3 sm:px-0 lg:absolute ${
+    <motion.header
+      className={`container fixed left-0 right-0 top-0 z-[120] mx-auto h-20 px-3 sm:px-0 ${
         ((pathName == "/" && bg) || pathName != "/") &&
-        "bg-gradient-to-b from-gray-950 from-85% via-gray-950 to-transparent to-100%"
+        "bg-gradient-to-b from-gray-950 from-85% via-gray-950 to-transparent to-100% transition duration-300"
       }`}
     >
       <nav className="relative flex h-full justify-between" aria-label="global">
@@ -87,6 +87,6 @@ export function Navbar({ items, logo }: INavbar) {
           )}
         </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   )
 }
