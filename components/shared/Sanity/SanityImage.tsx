@@ -31,6 +31,9 @@ export default function SanityImage({
           className={cn("object-cover object-center", className)}
           alt={alt}
           fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 100vw,
+              80vw"
           priority={priority}
           src={imageUrl}
         />
