@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Artist, Event, Gallery, Workshop } from "@/types/typings"
 
+import { cn } from "@/lib/utils"
 import SanityImage from "./Sanity/SanityImage"
 
 interface SectionContentProps {
@@ -10,6 +11,7 @@ interface SectionContentProps {
 
 export const SectionContent = ({ items, category }: SectionContentProps) => {
   const currentDate = new Date()
+
   return (
     <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
       {items.map((item: Artist | Workshop | Event | Gallery, index) => (
@@ -20,17 +22,18 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
               key={index}
             >
               <Link
-                className={
-                  "relative mx-auto flex aspect-video h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white"
-                }
+                className={cn(
+                  "relative mx-auto flex h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white",
+                  item._type == "event" ? "aspect-square" : "aspect-video"
+                )}
                 href={`/${item._type}/${item.slug}`}
               >
                 <SanityImage
                   className={"-z-10 rounded-lg border border-gray-950"}
                   image={item.image}
                   alt={item.name}
-                  height={540}
-                  width={960}
+                  height={item._type == "event" ? 1000 : 540}
+                  width={item._type == "event" ? 1000 : 960}
                 />
                 <span className="flex h-1/3 w-full items-center justify-center self-end group-hover:drop-shadow-glow2">
                   {item.name}
