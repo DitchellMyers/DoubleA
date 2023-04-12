@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { NavigationLink, Social, Sponsor } from "@/types/typings"
 
+import { AudioPlayer } from "../shared/AudioPlayer"
+
 interface IFooter {
   items: NavigationLink[]
   socials: Social[]

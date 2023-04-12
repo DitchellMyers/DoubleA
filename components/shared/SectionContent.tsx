@@ -35,7 +35,7 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
                   height={item._type == "event" ? 1000 : 540}
                   width={item._type == "event" ? 1000 : 960}
                 />
-                {item.name}
+                {item._type == "gallery" && item.name}
               </Link>
             </div>
           )}
