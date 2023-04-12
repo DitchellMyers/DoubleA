@@ -18,5 +18,5 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     }
   }, [])
 
-  return <audio ref={audioRef} src={src} className="hidden" />
+  return <audio loop autoPlay ref={audioRef} src={src} className="hidden" />
 }
