@@ -7,7 +7,6 @@ import { getSettings } from "lib/sanity.client"
 import { getPreviewToken } from "lib/sanity.server.preview"
 
 import { Navbar } from "@/components/global/Navbar/Navbar"
-import { AudioPlayer } from "@/components/shared/AudioPlayer"
 import { Container } from "@/components/ui/Container"
 
 interface IIndexRoute {
@@ -58,14 +57,11 @@ export default async function IndexRoute({ children }: IIndexRoute) {
   }
 
   return (
-    <>
-      <AudioPlayer src={"/audio.mp3"} />
-      <Container className="mb-20 space-y-20">
-        {token && <PreviewBanner />}
-        <Navbar items={settings.navItems} logo={settings.navImage} />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer items={settings.footerItems} socials={settings.socials} sponsors={settings.sponsors} />
-      </Container>
-    </>
+    <Container className="mb-20 space-y-20">
+      {token && <PreviewBanner />}
+      <Navbar items={settings.navItems} logo={settings.navImage} />
+      <main className="flex flex-1 flex-col">{children}</main>
+      <Footer items={settings.footerItems} socials={settings.socials} sponsors={settings.sponsors} />
+    </Container>
   )
 }
