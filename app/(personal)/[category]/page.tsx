@@ -5,7 +5,19 @@ import { PreviewSuspense } from "components/preview/PreviewSuspense"
 import { PreviewWrapper } from "components/preview/PreviewWrapper"
 import { getPreviewToken } from "lib/sanity.server.preview"
 
-import { getPage } from "@/lib/sanity.client"
+import { getPage, sanityClient } from "@/lib/sanity.client"
+import { sluqQueryCategory } from "@/lib/sanity.queries"
+
+export const revalidate = 360
+
+export async function generateStaticParams() {
+  const slugs: [{ _type: string; slug: string }] = await sanityClient().fetch(sluqQueryCategory)
+  return slugs.map((slug) => {
+    return {
+      category: slug.slug,
+    }
+  })
+}
 
 export default async function PageSlugRoute({ params }: { params: { category: string } }) {
   const { category } = params

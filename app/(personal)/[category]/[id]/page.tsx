@@ -1,11 +1,24 @@
 import { Artist, Event, Gallery, Sponsor, Workshop } from "@/types/typings"
 
-import { getContent } from "@/lib/sanity.client"
+import { getContent, sanityClient } from "@/lib/sanity.client"
+import { sluqQueryIds } from "@/lib/sanity.queries"
 import { getPreviewToken } from "@/lib/sanity.server.preview"
 import { ArtistPage } from "@/components/pages/singlePage.tsx/ArtistPage"
 import { EventPage } from "@/components/pages/singlePage.tsx/EventPage"
 import { GalleryPage } from "@/components/pages/singlePage.tsx/GalleryPage"
 import { WorkshopPage } from "@/components/pages/singlePage.tsx/WorkshopPage"
+
+export const revalidate = 360
+
+export async function generateStaticParams() {
+  const slugs: [{ _type: string; slug: string }] = await sanityClient().fetch(sluqQueryIds)
+  return slugs.map((slug) => {
+    return {
+      category: slug._type,
+      id: slug.slug,
+    }
+  })
+}
 
 export default async function PageSlugId({ params }: { params: { category: string; id: string } }) {
   const { category, id } = params

@@ -11,7 +11,7 @@ interface IToken {
   id?: string
 }
 
-const sanityClient = (token?: string) => {
+export const sanityClient = (token?: string) => {
   return createClient({ projectId, dataset, apiVersion, useCdn, token })
 }
 

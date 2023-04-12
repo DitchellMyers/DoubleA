@@ -82,3 +82,12 @@ export const sponsorsQuery = groq`*[_type == "page" && name == "Sponsoren und Pa
   }
 }
 `
+
+export const sluqQueryIds = groq`*[_type == "artist" || _type == "workshop" || _type == "gallery" || _type == "event"] | order(_type asc) {
+  _type,
+  "slug": slug.current
+}`
+
+export const sluqQueryCategory = groq`*[_type == "page"] {
+  "slug": slug.current
+}`
