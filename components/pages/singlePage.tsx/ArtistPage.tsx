@@ -10,12 +10,11 @@ import { getIcon } from "@/components/shared/getIcon"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 
 export const ArtistPage = ({ artist }: { artist: Artist }) => {
-  const { _type, name, image, socials, content, iframeSpotify, iframeYoutube } = artist
-  const square = ["event", "gallery"].some((x) => x === _type) ? true : false
+  const { name, image, socials, content, iframeSpotify, iframeYoutube } = artist
   return (
     <div className="flex flex-col lg:space-y-10">
-      <div className={cn("relative mx-auto w-full max-w-[1200px]", square ? "aspect-square" : "aspect-video")}>
-        <SanityImage image={image} alt={name} width={square ? 1500 : 1920} height={square ? 1500 : 1080} />
+      <div className={cn("relative mx-auto aspect-video w-full max-w-[1200px]")}>
+        <SanityImage image={image} alt={name} width={1200} height={675} />
       </div>
       <div className="mt-3 flex w-full flex-col items-center justify-center space-y-3 px-5 md:mt-5 md:space-y-5 lg:mt-10 lg:space-y-10">
         <TypographyH1 highlight>{name}</TypographyH1>

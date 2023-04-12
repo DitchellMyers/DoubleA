@@ -5,7 +5,7 @@ import SanityImage from "@/components/shared/Sanity/SanityImage"
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1"
 
 export const GalleryPage = ({ gallery }: { gallery: Gallery }) => {
-  const { _type, name, image, images, content } = gallery
+  const { name, images } = gallery
   return (
     <div className="space-y-10">
       <div className="flex w-full flex-col items-center justify-center space-y-5">
