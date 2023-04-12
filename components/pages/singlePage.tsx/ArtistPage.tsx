@@ -17,26 +17,31 @@ export const ArtistPage = ({ artist }: { artist: Artist }) => {
         <SanityImage image={image} alt={name} width={1200} height={675} priority />
       </div>
       <div className="mt-3 flex w-full flex-col items-center justify-center space-y-3 px-5 md:mt-5 md:space-y-5 lg:mt-10 lg:space-y-10">
-        <TypographyH1 highlight>{name}</TypographyH1>
-        {socials && (
-          <div className="flex flex-row gap-5 lg:mt-10">
-            {Object.entries(socials).map(
-              ([key, value], index) =>
-                value && (
-                  <Link className="uppercase" href={value} target="_blank" key={index}>
-                    {getIcon(key)}
-                  </Link>
-                )
-            )}
-          </div>
-        )}
+        <div className="flex flex-col">
+          <TypographyH1 className="sr-only" highlight>
+            {name}
+          </TypographyH1>
+          {socials && (
+            <div className="m-0 flex flex-row gap-5">
+              {Object.entries(socials).map(
+                ([key, value], index) =>
+                  value && (
+                    <Link className="uppercase" href={value} target="_blank" key={index}>
+                      {getIcon(key)}
+                    </Link>
+                  )
+              )}
+            </div>
+          )}
+        </div>
+
         {content && (
           <div className="font-sans">
             <CustomPortableText value={content}></CustomPortableText>
           </div>
         )}
         {(socials.youtube || socials.spotify) && (
-          <div className="grid w-11/12 grid-cols-1 gap-10 font-sans md:grid-cols-2">
+          <div className="grid w-full grid-cols-1 gap-10 font-sans md:grid-cols-2">
             {iframeYoutube && <YoutubeIFrame link={iframeYoutube} />}
             {iframeSpotify && <SpotifyIFrame link={iframeSpotify} />}
           </div>

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        sectionBG: "url('../public/SectionBG.jpg')",
+        sectionBG: "url('../public/SectionBG.png')",
       },
       dropShadow: {
         glow2: [

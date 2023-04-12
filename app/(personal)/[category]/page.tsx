@@ -8,7 +8,7 @@ import { getPreviewToken } from "lib/sanity.server.preview"
 import { getPage, sanityClient } from "@/lib/sanity.client"
 import { sluqQueryCategory } from "@/lib/sanity.queries"
 
-export const revalidate = 360
+export const revalidate = 3600
 
 export async function generateStaticParams() {
   const slugs: [{ _type: string; slug: string }] = await sanityClient().fetch(sluqQueryCategory)

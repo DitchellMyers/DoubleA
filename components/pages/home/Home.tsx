@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import SectionBG from "@/public/SectionBG.jpg"
+import SectionBG from "@/public/SectionBG.png"
 import { HomePage } from "@/types/typings"
 import { ScrollUp } from "components/shared/ScrollUp"
 

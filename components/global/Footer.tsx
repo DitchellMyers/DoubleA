@@ -13,25 +13,18 @@ export function Footer({ items, socials, sponsors }: IFooter) {
       <section className="grid grid-cols-2 font-bold">
         <div className="flex flex-col">
           {Object.entries(socials).map(([key, value], index) => (
-            <Link
-              href={value}
-              className="border-[0.5px] border-gray-300 bg-gray-950 p-3 uppercase hover:bg-black"
-              target="_blank"
-              key={index}
-            >
-              {key}
-            </Link>
+            <p className="bg-gray-950 p-3 uppercase decoration-2 hover:underline" key={index}>
+              <Link href={value} target="_blank">
+                {key}
+              </Link>
+            </p>
           ))}
         </div>
         <div className="flex flex-col">
           {items.map((item, index) => (
-            <Link
-              href={`/${item.slug}`}
-              className="border-[0.5px] border-gray-300 bg-gray-950 p-3 uppercase hover:bg-black"
-              key={index}
-            >
-              {item.slug}
-            </Link>
+            <p className="bg-gray-950 p-3 uppercase decoration-2 hover:underline" key={index}>
+              <Link href={`/${item.slug}`}>{item.slug}</Link>
+            </p>
           ))}
         </div>
       </section>

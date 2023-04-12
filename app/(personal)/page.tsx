@@ -7,7 +7,7 @@ import { getPreviewToken } from "lib/sanity.server.preview"
 import { Home } from "@/components/pages/home/Home"
 import { HomePagePreview } from "@/components/pages/home/HomePreview"
 
-export const revalidate = 360
+export const revalidate = 3600
 
 export default async function IndexRoute() {
   const token = getPreviewToken()

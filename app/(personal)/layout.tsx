@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import getConfig from "next/config"
 import { notFound } from "next/navigation"
 import { Footer } from "components/global/Footer"
 import { PreviewBanner } from "components/preview/PreviewBanner"
@@ -6,12 +7,12 @@ import { getSettings } from "lib/sanity.client"
 import { getPreviewToken } from "lib/sanity.server.preview"
 
 import { Navbar } from "@/components/global/Navbar/Navbar"
+import { AudioPlayer } from "@/components/shared/AudioPlayer"
 import { Container } from "@/components/ui/Container"
 
 interface IIndexRoute {
   children: React.ReactNode
 }
-
 export const metadata: Metadata = {
   title: "Double A Festival",
   description:
@@ -59,6 +60,7 @@ export default async function IndexRoute({ children }: IIndexRoute) {
   return (
     <Container className="mb-20 space-y-20">
       {token && <PreviewBanner />}
+      <AudioPlayer src={"/audio.mp3"} />
       <Navbar items={settings.navItems} logo={settings.navImage} />
       <main className="flex flex-1 flex-col">{children}</main>
       <Footer items={settings.footerItems} socials={settings.socials} sponsors={settings.sponsors} />

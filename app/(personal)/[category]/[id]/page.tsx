@@ -8,7 +8,7 @@ import { EventPage } from "@/components/pages/singlePage.tsx/EventPage"
 import { GalleryPage } from "@/components/pages/singlePage.tsx/GalleryPage"
 import { WorkshopPage } from "@/components/pages/singlePage.tsx/WorkshopPage"
 
-export const revalidate = 360
+export const revalidate = 3600
 
 export async function generateStaticParams() {
   const slugs: [{ _type: string; slug: string }] = await sanityClient().fetch(sluqQueryIds)

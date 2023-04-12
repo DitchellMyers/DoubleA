@@ -35,9 +35,7 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
                   height={item._type == "event" ? 1000 : 540}
                   width={item._type == "event" ? 1000 : 960}
                 />
-                <span className="flex h-1/3 w-full items-center justify-center self-end group-hover:drop-shadow-glow2">
-                  {item.name}
-                </span>
+                {item.name}
               </Link>
             </div>
           )}
