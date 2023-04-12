@@ -33,7 +33,7 @@ export default function SanityImage({
           fill
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 100vw,
-              80vw"
+              100vw"
           priority={priority}
           src={imageUrl}
         />
