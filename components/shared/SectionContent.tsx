@@ -1,4 +1,6 @@
+import Image from "next/image"
 import Link from "next/link"
+import TBA from "@/public/TBA.png"
 import { Artist, Event, Gallery, Workshop } from "@/types/typings"
 
 import { cn } from "@/lib/utils"
@@ -16,7 +18,7 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
     <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
       {items.map((item: Artist | Workshop | Event | Gallery, index) => (
         <>
-          {new Date(item.publishedAt) < currentDate && (
+          {new Date(item.publishedAt) < currentDate ? (
             <div
               className="group w-full rounded-lg border border-gray-950 md:brightness-50 md:hover:brightness-110"
               key={index}
@@ -38,7 +40,26 @@ export const SectionContent = ({ items, category }: SectionContentProps) => {
                 {item._type == "gallery" && item.name}
               </Link>
             </div>
-          )}
+          ) : item._type == "artist" ? (
+            <div
+              className="group w-full rounded-lg border border-gray-950 md:brightness-50 md:hover:brightness-110"
+              key={index}
+            >
+              <div
+                className={cn(
+                  "relative mx-auto flex aspect-video h-full w-full items-center justify-center text-center text-4xl/7 uppercase text-white"
+                )}
+              >
+                <Image
+                  className={"-z-10 rounded-lg border border-gray-950"}
+                  src={TBA}
+                  alt={"TBA"}
+                  height={540}
+                  width={960}
+                />
+              </div>
+            </div>
+          ) : null}
         </>
       ))}
     </div>
